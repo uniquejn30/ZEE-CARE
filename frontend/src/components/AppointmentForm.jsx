@@ -42,11 +42,11 @@ const AppointmentForm = () => {
     };
     fetchDoctors();
   }, []);
-  const handleAppointment = async (e) => {
+  const handleAppointment =  (e) => {
     e.preventDefault();
     try {
       const hasVisitedBool = Boolean(hasVisited);
-      const { data } = await axios.post(
+      const { data } =  axios.post(
         "http://localhost:4000/api/v1/appointment/post",
         {
           firstName,
@@ -62,10 +62,6 @@ const AppointmentForm = () => {
           doctor_lastName: doctorLastName,
           hasVisited: hasVisitedBool,
           address,
-        },
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
         }
       );
       toast.success(data.message);

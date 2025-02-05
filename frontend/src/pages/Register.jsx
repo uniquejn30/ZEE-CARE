@@ -18,17 +18,13 @@ const Register = () => {
 
   const navigateTo = useNavigate();
 
-  const handleRegistration = async (e) => {
+  const handleRegistration = (e) => {
     e.preventDefault();
     try {
-      const response = await axios
+      const response = axios
         .post(
           "http://localhost:4000/api/v1/user/patient/register",
-          { firstName, lastName, email, phone, nic, dob, gender, password },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
+          { firstName, lastName, email, phone, nic, dob, gender, password }
         )
         .then((res) => {
           toast.success(res.data.message);

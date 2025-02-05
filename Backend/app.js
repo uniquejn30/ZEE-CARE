@@ -12,17 +12,17 @@ import appointmentRouter from "./router/appointmentRouter.js";
 
 const app = express();
 config({ path: "./config/config.env" });
-// Changes 
-// app.use(cors());
+// // Changes 
+app.use(cors());
  
-app.use(
-  cors({
-    // origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO],
-    origin: "http://localhost:5173/",
-    method: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true, 
-  })
-);
+// app.use(
+//   cors({
+//     // origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO],
+//     origin: "http://localhost:5173/",
+//     method: ["GET", "POST", "DELETE", "PUT"],
+//     credentials: true, 
+//   })
+// );
 
 app.use(cookieParser());
 app.use(express.json());
@@ -42,3 +42,5 @@ dbConnection();
 
 app.use(errorMiddleware);
 export default app;
+
+

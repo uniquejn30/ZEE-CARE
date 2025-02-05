@@ -1,9 +1,6 @@
 import app from "./app.js";
 import cloudinary from "cloudinary";
 // import cors from "cors";
-
-
-// const cors = require("cors");
 // app.use(cors());
 
 

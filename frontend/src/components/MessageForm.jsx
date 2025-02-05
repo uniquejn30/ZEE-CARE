@@ -8,16 +8,11 @@ const MessageForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-
-  const handleMessage = async (e) => {
+  const handleMessage =  (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/v1/message/send",
-          { firstName, lastName, email, phone, message },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
+       axios.post("http://localhost:4000/api/v1/message/send",
+          { firstName, lastName, email, phone, message }
         )
         .then((res) => {
           toast.success(res.data.message);
@@ -83,3 +78,5 @@ const MessageForm = () => {
 };
 
 export default MessageForm;
+
+

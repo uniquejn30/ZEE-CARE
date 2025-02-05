@@ -13,19 +13,20 @@ const Login = () => {
 
   const navigateTo = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin =  (e) => {
     e.preventDefault();
     try {
-      const response = await axios
+      const response =  axios
         .post(
           "http://localhost:4000/api/v1/user/login",
           { email, password, confirmPassword, role: "Patient" },
           {
-            withCredentials: true,
+            withCredentials: false,
             headers: { "Content-Type": "application/json" },
           }
         )
         .then((res) => {
+          console.log(res);
           toast.success(res.data.message);
           setIsAuthenticated(true);
           navigateTo("/");
@@ -38,6 +39,7 @@ const Login = () => {
     }
   };
 
+  
   if (isAuthenticated) {
     return <Navigate to={"/"} />;
   }

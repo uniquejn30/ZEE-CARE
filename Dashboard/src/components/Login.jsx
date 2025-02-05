@@ -13,16 +13,12 @@ const Login = () => {
 
   const navigateTo = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin =  (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response =  axios.post(
           "http://localhost:4000/api/v1/user/login",
-          { email, password, confirmPassword, role: "Admin" },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
+          { email, password, confirmPassword, role: "Admin" }
         );
           toast.success(response.data.message);
           setIsAuthenticated(true);
